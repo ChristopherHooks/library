@@ -25,6 +25,8 @@
     border: 5px solid rgb(77, 148, 173);
     border-radius: 12px;
     display: flex;
+    flex-direction: column;
+    width: 90%;
     flex-wrap: wrap;
     gap: 10px;
     padding: 10px;
@@ -34,12 +36,10 @@
 }
 
 .book {
-    width: 170px;
-    height: 250px;
+    width: 90%;
     background-color: bisque;
     color: black;
     display: flex;
-    flex-direction: column;
     gap: 10px;
     justify-content: space-around;
     padding: 20px;

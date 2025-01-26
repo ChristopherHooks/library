@@ -3,6 +3,7 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.data = myLibrary[this.book];
     this.info = function info() {
         if (!this.read) {
             return `${this.title} by ${this.author}, ${pages} pages, not read yet`;
@@ -14,6 +15,20 @@ function Book(title, author, pages, read) {
 
 //Create Library
 const myLibrary = [];
+
+//Books for testing
+const theHobbit = new Book("The Hobbit", "J.R.R Tolkien", 295, false);
+const lostGods = new Book('Lost Gods', 'Brom', '300', true);
+const theChildThief = new Book('The Child Thief', 'Brom', '600', true);
+const slewfoot = new Book('Slewfoot', 'Brom', '545', true);
+
+
+myLibrary.push(theChildThief);
+myLibrary.push(theHobbit);
+myLibrary.push(lostGods);
+myLibrary.push(slewfoot);
+
+showLibrary();
 
 function addBookToLibrary() {
     const title = document.getElementById('title').value;
@@ -27,25 +42,42 @@ function addBookToLibrary() {
 
 }
 
+function removeFromLibrary() {
+
+}
+
 const newBook = document.getElementById('new-book');
 newBook.addEventListener('click', (event) => {
-
-    event.preventDefault();
     addBookToLibrary();
+    showLibrary();
 })
+
+const removeBook = document.querySelectorAll('.remove');
+
 
 
 function showLibrary() {
-    
+    const libraryDiv = document.querySelector('.library');
+    libraryDiv.innerHTML = '';
+
+    myLibrary.forEach((book) => {
+        const bookDiv = document.createElement('div');
+        bookDiv.classList.add('book');
+
+        bookDiv.innerHTML =
+            `<h3>${book.title}</h3>
+            <p class="author">${book.author}</p>
+            <p class="pages">${book.pages} pages</p>
+            <p class="read">${book.read ? 'Read' : 'Not read yet'}</p>
+            <button class='remove'>Remove</button> <button class='toggle'>Read</button>`;
+
+        libraryDiv.appendChild(bookDiv);
+
+    });
+
 }
 
 
 
-
-//Books for testing
-// const theHobbit = new Book("The Hobbit", "J.R.R Tolkien", 295, false);
-// const lostGods = new Book('Lost Gods', 'Brom', '300', true);
-// const theChildThief = new Book('The Child Thief', 'Brom', '600', true);
-// const slewfoot = new Book('Slewfoot', 'Brom', '545', true);
 
 

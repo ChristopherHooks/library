@@ -47,6 +47,15 @@
     border-radius: 8px;
 }
 
+.form-bg {
+    background-color: rgba(0, 0, 0, 0.512);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .form-container {
     background-color: rgb(240, 253, 217);
     color: black;

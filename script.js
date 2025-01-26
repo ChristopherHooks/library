@@ -22,7 +22,6 @@ const lostGods = new Book('Lost Gods', 'Brom', '300', true);
 const theChildThief = new Book('The Child Thief', 'Brom', '600', true);
 const slewfoot = new Book('Slewfoot', 'Brom', '545', true);
 
-
 myLibrary.push(theChildThief);
 myLibrary.push(theHobbit);
 myLibrary.push(lostGods);
@@ -39,11 +38,27 @@ function addBookToLibrary() {
     const book = new Book(title, author, pages, read);
 
     myLibrary.push(book);
+    addDataToBook(myLibrary);
 
 }
 
-function removeFromLibrary() {
+function addDataToBook(array) {
+    i = 0;
+    for (const book in array) {
+        book.data = i;
+        i++;
+    }
+}
 
+function removeBookFromLibrary(index) {
+    myLibrary.splice(index, 1);
+    showLibrary();
+}
+
+function toggleRead(index) {
+    // Toggle the read property of the selected book
+    myLibrary[index].read = !myLibrary[index].read;
+    showLibrary();
 }
 
 const newBook = document.getElementById('new-book');
@@ -52,15 +67,11 @@ newBook.addEventListener('click', (event) => {
     showLibrary();
 })
 
-const removeBook = document.querySelectorAll('.remove');
-
-
-
 function showLibrary() {
     const libraryDiv = document.querySelector('.library');
     libraryDiv.innerHTML = '';
 
-    myLibrary.forEach((book) => {
+    myLibrary.forEach((book, index) => {
         const bookDiv = document.createElement('div');
         bookDiv.classList.add('book');
 
@@ -71,9 +82,21 @@ function showLibrary() {
             <p class="read">${book.read ? 'Read' : 'Not read yet'}</p>
             <button class='remove'>Remove</button> <button class='toggle'>Read</button>`;
 
+        const removeButton = bookDiv.querySelector('.remove');
+        removeButton.addEventListener('click', () => {
+            removeBookFromLibrary(index);
+        });
+
+        const toggleButton = bookDiv.querySelector('.toggle');
+        toggleButton.addEventListener('click', () => {
+            toggleRead(index);
+        })
+
         libraryDiv.appendChild(bookDiv);
 
     });
+
+    console.log(myLibrary);
 
 }
 

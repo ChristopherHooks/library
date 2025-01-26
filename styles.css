@@ -49,5 +49,14 @@
     border-radius: 24px;
     background-color: cadetblue;
     color: aliceblue;
+}
 
+.form-container {
+    background-color: rgb(240, 253, 217);
+    color: black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
 }

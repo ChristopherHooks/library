@@ -1,7 +1,3 @@
-Here's a well-structured README for your library app project:  
-
----
-
 # My Library App
 
 My Library App is a simple web application that allows users to manage a virtual library. Users can add, view, update, and remove books, as well as mark them as read or unread.

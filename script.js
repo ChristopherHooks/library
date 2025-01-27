@@ -16,6 +16,7 @@ function Book(title, author, pages, read) {
 //Create Library
 const myLibrary = [];
 
+
 //Books for testing
 const theHobbit = new Book("The Hobbit", "J.R.R Tolkien", 295, false);
 const lostGods = new Book('Lost Gods', 'Brom', '300', true);
@@ -30,6 +31,7 @@ myLibrary.push(slewfoot);
 showLibrary();
 
 function addBookToLibrary() {
+    const form = document.querySelector('#form');
     const title = document.getElementById('title').value;
     const author = document.querySelector('#author').value;
     const pages = document.querySelector('#pages').value;
@@ -39,12 +41,22 @@ function addBookToLibrary() {
 
     myLibrary.push(book);
     hideForm();
+    form.reset();
 }
 
 const addNewButton = document.querySelector('.add-new-book');
 addNewButton.addEventListener('click', () => {
     console.log('clicked');
     showForm();
+})
+
+const cancelButton = document.querySelector('#cancel');
+cancelButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    const form = document.querySelector('#form');
+
+    hideForm();
+    form.reset();
 })
 
 const formBG = document.querySelector('.form-bg');

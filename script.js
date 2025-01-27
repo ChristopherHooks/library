@@ -80,7 +80,7 @@ function showLibrary() {
             <p class="author">${book.author}</p>
             <p class="pages">${book.pages} pages</p>
             <p class="read">${book.read ? 'Read' : 'Not read yet'}</p>
-            <button class='remove'>Remove</button> <button class='toggle'>Read</button>`;
+           <div class="buttons"><button class='btn remove'>Remove</button> <button class='btn toggle'>Read</button></div>`;
 
         const removeButton = bookDiv.querySelector('.remove');
         removeButton.addEventListener('click', () => {

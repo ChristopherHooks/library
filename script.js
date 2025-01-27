@@ -38,16 +38,23 @@ function addBookToLibrary() {
     const book = new Book(title, author, pages, read);
 
     myLibrary.push(book);
-    addDataToBook(myLibrary);
-
+    hideForm();
 }
 
-function addDataToBook(array) {
-    i = 0;
-    for (const book in array) {
-        book.data = i;
-        i++;
-    }
+const addNewButton = document.querySelector('.add-new-book');
+addNewButton.addEventListener('click', () => {
+    console.log('clicked');
+    showForm();
+})
+
+const formBG = document.querySelector('.form-bg');
+
+function showForm() {
+    formBG.style.visibility = 'visible';
+}
+
+function hideForm() {
+    formBG.style.visibility = 'hidden';
 }
 
 function removeBookFromLibrary(index) {
